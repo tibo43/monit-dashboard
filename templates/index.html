@@ -5,9 +5,15 @@ $def with (output, now)
   $ color = "green"
   <div>
     <div class="download-header">
+      <div style="height: 10%; float:left">
+        Latest update: $now.day/$now.month/$now.year, $now.hour:$now.minute:$now.second
+        <br>
+        <a href="/">Home</a> | <a href="/help">Help</a>
+      </div>
       <button class="download-button" onclick="window.location.href = 'download';">Download Report</button>
     </div>
-    <div style="height: 100%;border-right:2px solid #ccc; padding:5px;overflow-x: hidden; float:left; width:48%">
+    <div style="height: 100%;border-right:1px solid #ccc; padding:5px;overflow-x: hidden; float:left; width:48%">
+      <div class="wrapper">
       $for server in range(len(output)):
         $code:
             errors = 0
@@ -78,26 +84,17 @@ $def with (output, now)
                     </tr>
 
             </table>
-            </div>
-</div>
-
-
-    <div class="canvas-container">
+          </div>
+        </div>
+    </div>
+    <div style="height: 100%;border-left:1px solid #ccc; padding:5px;overflow-x: hidden; float:right; width:48%">
       <div class="canvas-graph">
         <div class="canvas-header">
-          <h2 style="margin: 0">Hosts status</h2>
+          <h2 style="margin: 0">$output[server]['name']</h2>
         </div>
         <canvas id="canvas" width="400" height="400"></canvas>
       </div>
     </div>
-
-    <div style="height: 10%; float:right">
-      <br><br><br>
-      Latest update: $now.day/$now.month/$now.year, $now.hour:$now.minute:$now.second
-      <br><br>
-      <a href="/">Home</a> | <a href="/help">Help</a>
-    </div>
-
   </div>
 </body>
 

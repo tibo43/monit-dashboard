@@ -5,6 +5,12 @@
   text-decoration: underline;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
 th {
   background-color: #999;
   padding: 10px;
