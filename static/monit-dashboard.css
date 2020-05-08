@@ -5,12 +5,6 @@
   text-decoration: underline;
 }
 
-.wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-gap: 10px;
-}
-
 th {
   background-color: #999;
   padding: 10px;
@@ -50,19 +44,41 @@ button.accordion {
   font-size: 12px;
 }
 
-.column {
-  color: #FFF;
-  float: left;
-  width: 50%;
-}
-
 div.menu {
   display: block;
   overflow: auto; 
   background-color: #273c75;
   padding-left: 5px;
   padding-right: 5px;
-  text-align:center
+  text-align: center
+}
+
+div.column {
+  color: #FFF;
+  float: left;
+  width: 50%;
+}
+
+div.mosaic {
+  height: 100%;
+  padding: 5px;
+  overflow-x: hidden;
+  float: left;
+  width: 59%
+}
+
+div.infos {
+  height: 100%;
+  padding: 5px;
+  overflow-x: hidden;
+  float: right;
+  width: 39%
+}
+
+div.wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 10px;
 }
 
 div.panel {

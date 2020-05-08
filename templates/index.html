@@ -12,22 +12,22 @@ $def with (output, now)
         <p style="float: right;">update: $now.day/$now.month/$now.year, $now.hour:$now.minute:$now.second</p>
       </div>
     </div>
-    <div style="height: 100%;border-right:1px solid #ccc; padding:5px;overflow-x: hidden; float:left; width:48%">
+    <div class="mosaic">
       <div class="wrapper">
-      $for server in range(len(output)):
-        $code:
-            errors = 0
-            color = "green"
+        $for server in range(len(output)):
+          $code:
+              errors = 0
+              color = "green"
 
-        $for check in output[server]['result'].keys():
-            $ isError = output[server]['result'].get(check)
-            $if isError != 0:
-                $code:
-                    errors=errors+1
-      <div class=cels >
-        $if errors > 0:
-            $code:
-                color = "red"
+          $for check in output[server]['result'].keys():
+              $ isError = output[server]['result'].get(check)
+              $if isError != 0:
+                  $code:
+                      errors=errors+1
+        <div class="cels">
+          $if errors > 0:
+              $code:
+                  color = "red"
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
             <div class="panel">
 
@@ -88,7 +88,7 @@ $def with (output, now)
         </div>
       </div>
     </div>
-    <div style="height: 100%;border-left:1px solid #ccc; padding:5px;overflow-x: hidden; float:right; width:48%">
+    <div classe="infos">
       <div class="canvas-graph">
         <div class="canvas-header">
           <h2 style="margin: 0">$output[server]['name']</h2>
