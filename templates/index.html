@@ -14,24 +14,24 @@ $def with (output, now)
     </div>
     <div class="mosaic">
       <div class="wrapper">
-            $for server in range(len(output)):
-              $code:
-                errors = 0
-                color = "green"
+        $for server in range(len(output)):
+          $code:
+            errors = 0
+            color = "green"
 
-              $for check in output[server]['result'].keys():
-                $ isError = output[server]['result'].get(check)
-                $if isError != 0:
-                  $code:
-                    errors=errors+1
-                  $if errors > 0:
-                    $code:
-                      color = "red"
-            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
-            $else:
+          $for check in output[server]['result'].keys():
+            $ isError = output[server]['result'].get(check)
+            $if isError != 0:
+              $code:
+                errors=errors+1
+              $if errors > 0:
+                $code:
+                  color = "red"
+        <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
+              $else:
                 $code:
                   color = "green"
-            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
+        <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
       </div>
     </div>
     <div classe="infos">
