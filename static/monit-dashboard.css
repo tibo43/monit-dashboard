@@ -78,7 +78,12 @@ div.infos {
 div.wrapper {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  grid-gap: 10px;
+  row-gap: 5px;
+  column-gap: 5px;
+}
+
+div.cels {
+  display: block;
 }
 
 div.panel {
