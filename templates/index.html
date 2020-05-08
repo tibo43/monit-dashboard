@@ -29,11 +29,9 @@ $def with (output, now)
               color = "red"
           <div class="cels">
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
-          </div>
         $else:
             $code:
               color = "green"
-          <div class="cels">
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
           </div>
         </div>
