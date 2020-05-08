@@ -34,7 +34,7 @@ tr:nth-child(even) {
 }
 
 a {
-  color: #cb0017;
+  color: #fff;
   font-weight: bolder;
 }
 
@@ -60,6 +60,19 @@ button.download-button {
   outline: none;
   transition: 0.4s;
   float: right;
+  margin: auto 0;
+}
+
+div.menu {
+  color: white;
+  background-color: #00a8ff;
+  cursor: pointer;
+  padding: 18px;
+  text-align: center;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  float: left;
   margin: auto 0;
 }
 
