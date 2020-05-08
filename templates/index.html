@@ -27,11 +27,11 @@ $def with (output, now)
             $if errors > 0:
               $code:
                 color = "red"
-          <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
-            $if errors > 0:
+            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
+            $else:
               $code:
                 color = "blue"
-          <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
+            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
       </div>
     </div>
     <div classe="infos">
