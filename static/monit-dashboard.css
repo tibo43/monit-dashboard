@@ -64,16 +64,17 @@ button.download-button {
 }
 
 .column {
+  color: #FFF;
   float: left;
   width: 33.33%;
 }
 
 div.menu {
-  height: 10%;
+  display: block;
+  overflow: auto; 
   width: 100%;
   background-color: #273c75;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding: 20px;
 }
 
 div.panel {
