@@ -24,7 +24,7 @@ $def with (output, now)
             $if isError != 0:
               $code:
                 errors=errors+1
-                <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
+            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
       </div>
     </div>
     <div classe="infos">
