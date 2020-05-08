@@ -14,80 +14,30 @@ $def with (output, now)
     </div>
     <div class="mosaic">
       <div class="wrapper">
-        $for server in range(len(output)):
+    $for server in range(len(output)):
+      $code:
+        errors = 0
+        color = "green"
+
+      $for check in output[server]['result'].keys():
+        $ isError = output[server]['result'].get(check)
+        $if isError != 0:
           $code:
-              errors = 0
-              color = "green"
-
-          $for check in output[server]['result'].keys():
-              $ isError = output[server]['result'].get(check)
-              $if isError != 0:
-                  $code:
-                      errors=errors+1
-        <div class="cels">
+            errors=errors+1
           $if errors > 0:
-              $code:
-                  color = "red"
+            $code:
+              color = "red"
+          <div class="cels">
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
-            <div class="panel">
-
-            <br>
-            <table width=100%>
-            <thead class="server-link">
-            <tr><th colspan="2">
-            <a href="$output[server]['url']" target="_blank">$output[server]['name']</a>
-            </th></tr>
-            </thead>
-            $for check in output[server]['result'].keys():
-                $ isError = output[server]['result'].get(check)
-                $if isError != 0:
-                    <tr>
-                    <td><a href="$output[server]['url']/$check"
-                      target="_blank">$check</a></td>
-                    <td><a href="$output[server]['url']/$check"
-                       target="_blank"><img src="static/img/error.png"></a></td>
-                    </tr>
-                $else:
-                    <tr>
-                    <td>$check</td>
-                    <td><img src="static/img/ok.png"></td>
-                    </tr>
-
-            </table>
-            </div>
+          </div>
         $else:
             $code:
-                color = "green"
+              color = "green"
+          <div class="cels">
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
-            <div class="panel">
-
-            <br>
-            <table width=100%>
-            <thead class="server-link">
-            <tr><th colspan="2">
-            <a href="$output[server]['url']" target="_blank">$output[server]['name']</a>
-            </th></tr>
-            </thead>
-            $for check in output[server]['result'].keys():
-                $ isError = output[server]['result'].get(check)
-                $if isError != 0:
-                    <tr>
-                    <td><a href="$output[server]['url']/$check"
-                      target="_blank">$check</a></td>
-                    <td><a href="$output[server]['url']/$check"
-                       target="_blank"><img src="static/img/error.png"></a></td>
-                    </tr>
-                $else:
-                    <tr>
-                    <td>$check</td>
-                    <td><img src="static/img/ok.png"></td>
-                    </tr>
-
-            </table>
           </div>
         </div>
       </div>
-    </div>
     <div classe="infos">
       <div class="canvas-graph">
         <div class="canvas-header">
