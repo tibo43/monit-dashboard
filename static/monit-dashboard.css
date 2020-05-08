@@ -50,21 +50,11 @@ button.accordion {
   font-size: 12px;
 }
 
-button.download-button {
-  color: white;
-  background-color: #00a8ff;
-  cursor: pointer;
-  padding: 10px;
-  text-align: center;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-}
-
 .column {
   color: #FFF;
   float: left;
-  width: 33.33%;
+  width: 50%;
+  padding: 15px;
 }
 
 div.menu {
