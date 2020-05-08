@@ -24,10 +24,10 @@ $def with (output, now)
             $if isError != 0:
               $code:
                 errors=errors+1
-            $if errors > 0:
-              $code:
-                color = "red"
-            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
+          $if errors > 0:
+            $code:
+              color = "red"
+          <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
         $for server in range(len(output)):
           $code:
             errors = 0
@@ -38,10 +38,10 @@ $def with (output, now)
             $if isError != 0:
               $code:
                 errors=errors+1
-            $if errors == 0:
-              $code:
-                color = "green"
-            <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
+          $if errors == 0:
+            $code:
+              color = "green"
+          <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
       </div>
     </div>
     <div classe="infos">
