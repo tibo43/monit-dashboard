@@ -112,4 +112,4 @@ class download(object):
 # Main
 if __name__ == "__main__":
     app = monitDashboard(urls, globals())
-    app.run(port=8080)
+    app.run(port=7071)
