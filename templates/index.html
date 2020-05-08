@@ -5,12 +5,13 @@ $def with (output, now)
   $ color = "green"
   <div>
     <div class="menu">
-      <div class="menu-left">
-        Latest update: $now.day/$now.month/$now.year, $now.hour:$now.minute:$now.second
-        <br>
+      <div class="column">
         <a href="/">Home</a> | <a href="/help">Help</a>
       </div>
-      <div class="menu-right">
+      <div class="column">
+        Latest update: $now.day/$now.month/$now.year, $now.hour:$now.minute:$now.second
+      </div>
+      <div class="column">
         <button class="download-button" onclick="window.location.href = 'download';">Download Report</button>
       </div>
     </div>
@@ -26,7 +27,7 @@ $def with (output, now)
             $if isError != 0:
                 $code:
                     errors=errors+1
-        <div class=cels >
+      <div class=cels >
         $if errors > 0:
             $code:
                 color = "red"
