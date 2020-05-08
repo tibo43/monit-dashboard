@@ -4,13 +4,15 @@ $def with (output, now)
   $ errors = 0
   $ color = "green"
   <div>
-    <div class="download-header">
-      <div class="menu">
+    <div class="menu">
+      <div class="menu-left">
         Latest update: $now.day/$now.month/$now.year, $now.hour:$now.minute:$now.second
         <br>
         <a href="/">Home</a> | <a href="/help">Help</a>
       </div>
-      <button class="download-button" onclick="window.location.href = 'download';">Download Report</button>
+      <div class="menu-right">
+        <button class="download-button" onclick="window.location.href = 'download';">Download Report</button>
+      </div>
     </div>
     <div style="height: 100%;border-right:1px solid #ccc; padding:5px;overflow-x: hidden; float:left; width:48%">
       <div class="wrapper">
@@ -28,6 +30,7 @@ $def with (output, now)
         $if errors > 0:
             $code:
                 color = "red"
+          <div class=cels >
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
             <div class="panel">
 
@@ -86,6 +89,7 @@ $def with (output, now)
             </table>
           </div>
         </div>
+      </div>
     </div>
     <div style="height: 100%;border-left:1px solid #ccc; padding:5px;overflow-x: hidden; float:right; width:48%">
       <div class="canvas-graph">
