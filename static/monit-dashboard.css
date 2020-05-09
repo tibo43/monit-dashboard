@@ -115,7 +115,6 @@ div.panel.show {
 }
 
 .canvas-container {
-  width: 50%;
   display: flex;
   justify-content: center;
   margin-top: 200;
