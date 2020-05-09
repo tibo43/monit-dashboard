@@ -24,7 +24,13 @@ $def with (output, now)
             $code:
               color = "black"
             <button class="accordion ${color}">$output[server]['name']</button>
-          $else:
+
+        $for server in range(len(output)):
+          $code:
+            errors = 0
+            color = "green"
+          
+          $if output[server]['status'] == 'ok':
             $for check in output[server]['result'].keys():
               $ isError = output[server]['result'].get(check)
               $if isError != 0:
