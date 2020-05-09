@@ -16,7 +16,7 @@ $def with (output, now)
       <div class="wrapper">
 
         $for server in range(len(output)):
-          $if output[server]['status'] == "ko":
+          $if output[server]['status'] == 'ko':
             $code:
               color = "black"
             <button class="accordion ${color}">$output[server]['name']</button>
@@ -25,7 +25,7 @@ $def with (output, now)
           $code:
             errors = 0
           
-          $if output[server]['status'] == "ok":
+          $if output[server]['status'] == 'ok':
             $for check in output[server]['result'].keys():
               $ isError = output[server]['result'].get(check)
               $if isError != 0:
@@ -40,7 +40,8 @@ $def with (output, now)
           $for server in range(len(output)):
             $code:
               errors = 0
-            $if output[server]['status'] == 'ko':
+            
+            $if output[server]['status'] == 'ok':
               $for check in output[server]['result'].keys():
                 $ isError = output[server]['result'].get(check)
                 $if isError != 0:
