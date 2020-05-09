@@ -51,8 +51,8 @@ def getMonit():
 
         for server in servers:
             host = servers[server]
-            response = requests.get(host['url'] + xmlQuery, auth=(host['user'], host['passwd']))
             print(host['url'])
+            response = requests.get(host['url'] + xmlQuery, auth=(host['user'], host['passwd']))
             print(response.status_code)
 
             allstat = json.loads(json.dumps(xmltodict.parse(response.text)['monit']))
