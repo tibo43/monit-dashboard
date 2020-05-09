@@ -117,8 +117,6 @@ div.panel.show {
 .canvas-container {
   display: flex;
   justify-content: center;
-  margin-top: 200;
-  margin-bottom: 100;
 }
 
 .canvas-graph {
@@ -127,7 +125,6 @@ div.panel.show {
   display: inline-block;
   position: relative;
   background-color: white;
-  margin: 20px 0;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
 }
 
