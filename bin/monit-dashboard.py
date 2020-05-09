@@ -47,13 +47,15 @@ def getMonit():
     xmlQuery = "/_status?format=xml"
 
     with open('{0}/conf/servers.json'.format(os.path.expanduser('.'))) as f:
-        cf = json.loads(f.read())
+        servers = json.loads(f.read())
 
-        for site in cf:
-            s = cf[site]
-            r = requests.get(s['url'] + xmlQuery, auth=(s['user'], s['passwd']))
+        for server in servers:
+            host = servers[server]
+            response = requests.get(host['url'] + xmlQuery, auth=(host['user'], host['passwd']))
+            print(host['url'])
+            print(response.status_code)
 
-            allstat = json.loads(json.dumps(xmltodict.parse(r.text)['monit']))
+            allstat = json.loads(json.dumps(xmltodict.parse(response.text)['monit']))
 
             services = allstat['service']
             status = {}
@@ -68,7 +70,7 @@ def getMonit():
             sorted_checks = OrderedDict()
             sorted_checks = OrderedDict(sorted(checks.items(), key=itemgetter(1), reverse=True))
             count = calculate_count(sorted_checks)
-            server = dict(name=site, url=s['url'], result=sorted_checks, s_rate=count)
+            server = dict(name=server, url=s['url'], result=sorted_checks, s_rate=count)
 
             output.append(server)
     print(datetime.datetime.now())
