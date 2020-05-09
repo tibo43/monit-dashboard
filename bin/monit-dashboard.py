@@ -54,28 +54,28 @@ def getMonit():
             
             try:
                 response = requests.get(host['url'] + xmlQuery, auth=(host['user'], host['passwd']))
-                response.raise_for_status()
-            except requests.ConnectionError as err:
-                print(err)
+                allstat = json.loads(json.dumps(xmltodict.parse(response.text)['monit']))
 
-            allstat = json.loads(json.dumps(xmltodict.parse(response.text)['monit']))
+                services = allstat['service']
+                status = {}
+                server = {}
+                checks = OrderedDict()
 
-            services = allstat['service']
-            status = {}
-            server = {}
-            checks = OrderedDict()
+                for service in services:
+                    name = service['name']
+                    status[name] = int(service['status'])
+                    checks[name] = status[name]
 
-            for service in services:
-                name = service['name']
-                status[name] = int(service['status'])
-                checks[name] = status[name]
+                sorted_checks = OrderedDict()
+                sorted_checks = OrderedDict(sorted(checks.items(), key=itemgetter(1), reverse=True))
+                count = calculate_count(sorted_checks)
+                server = dict(name=server, url=host['url'], result=sorted_checks, s_rate=count, status="ok")
 
-            sorted_checks = OrderedDict()
-            sorted_checks = OrderedDict(sorted(checks.items(), key=itemgetter(1), reverse=True))
-            count = calculate_count(sorted_checks)
-            server = dict(name=server, url=host['url'], result=sorted_checks, s_rate=count)
+            except requests.ConnectionError:
+                server = dict(name=server, url=host['url'], result=None, s_rate=0, status="ko")
 
             output.append(server)
+            print(output)
     print(datetime.datetime.now())
     return(output)
 
