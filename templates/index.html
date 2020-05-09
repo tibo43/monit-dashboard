@@ -14,7 +14,7 @@ $def with (output, now)
     </div>
     <div class="mosaic">
       <div class="wrapper">
-        
+
         $for server in range(len(output)):
           $code:
             errors = 0
@@ -48,12 +48,14 @@ $def with (output, now)
             <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
       </div>
     </div>
-    <div classe="infos">
-      <div class="canvas-graph">
-        <div class="canvas-header">
-          <h2 style="margin: 0">$output[server]['name']</h2>
+    <div class="infos">
+      <div class= "canvas-container">
+        <div class="canvas-graph">
+          <div class="canvas-header">
+            <h2 style="margin: 0">$output[server]['name']</h2>
+          </div>
+          <canvas id="canvas" width="400" height="400"></canvas>
         </div>
-        <canvas id="canvas" width="400" height="400"></canvas>
       </div>
     </div>
   </div>
