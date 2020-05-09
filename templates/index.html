@@ -23,7 +23,7 @@ $def with (output, now)
           $if output[server]['status'] == 'ko':
             $code:
               color = "black"
-              <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
+            <button class="accordion ${color}">$output[server]['name']</button>
               
           $else:
             $for check in output[server]['result'].keys():

@@ -114,6 +114,16 @@ div.panel.show {
   background-color: #c9302c;
 }
 
+.black {
+  background-color: #000;
+  font-size: 20px;
+  color: #FFF;
+}
+
+.black:hover {
+  background-color: #000;
+}
+
 .canvas-container {
   display: flex;
   justify-content: center;
