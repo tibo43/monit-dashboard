@@ -54,8 +54,9 @@ def getMonit():
             
             try:
                 response = requests.get(host['url'] + xmlQuery, auth=(host['user'], host['passwd']))
-            except ConnectionError:
-                print(host['url'])
+                response.raise_for_status()
+            except requests.exceptions.HTTPError as err:
+                raise SystemExit(err)
 
             allstat = json.loads(json.dumps(xmltodict.parse(response.text)['monit']))
 
