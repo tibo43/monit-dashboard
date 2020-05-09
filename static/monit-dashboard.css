@@ -120,8 +120,7 @@ div.panel.show {
 }
 
 .canvas-graph {
-  min-height: 30%;
-  min-width: 24.5%;
+  width: 100%;
   display: inline-block;
   position: relative;
   background-color: white;

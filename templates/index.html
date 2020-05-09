@@ -52,11 +52,31 @@ $def with (output, now)
       <div class= "canvas-container">
         <div class="canvas-graph">
           <div class="canvas-header">
-            <h2 style="margin: 0">Host status</h2>
+            <h2 style="margin: 0"><a href="$output[server]['url']" target="_blank">$output[server]['name']</a></h2>
           </div>
           <canvas id="canvas" width="400" height="400"></canvas>
         </div>
       </div>
+      <div class="panel">
+        <table width=100%>
+        <thead class="server-link">
+        <tr><th colspan="2">
+        <a href="$output[server]['url']" target="_blank">$output[server]['name']</a>
+        </th></tr>
+        </thead>
+        $for check in output[server]['result'].keys():
+            $ isError = output[server]['result'].get(check)
+            $if isError != 0:
+                <tr>
+                  <td><a href="$output[server]['url']/$check" target="_blank">$check</a></td>
+                  <td><a href="$output[server]['url']/$check" target="_blank"><img src="static/img/error.png"></a></td>
+                </tr>
+            $else:
+                <tr>
+                  <td>$check</td>
+                  <td><img src="static/img/ok.png"></td>
+                </tr>
+        </table>
     </div>
   </div>
 </body>
