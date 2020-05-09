@@ -70,7 +70,7 @@ def getMonit():
             sorted_checks = OrderedDict()
             sorted_checks = OrderedDict(sorted(checks.items(), key=itemgetter(1), reverse=True))
             count = calculate_count(sorted_checks)
-            server = dict(name=server, url=s['url'], result=sorted_checks, s_rate=count)
+            server = dict(name=server, url=host['url'], result=sorted_checks, s_rate=count)
 
             output.append(server)
     print(datetime.datetime.now())
