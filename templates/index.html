@@ -25,7 +25,6 @@ $def with (output, now)
               color = "black"
             <button class="accordion ${color}">$output[server]['name']</button>
               
-          $else:
             $for check in output[server]['result'].keys():
               $ isError = output[server]['result'].get(check)
               $if isError != 0:
@@ -36,22 +35,22 @@ $def with (output, now)
               $code:
                 color = "red"
               <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']: $errors error(s)</button>
-          
-          $for server in range(len(output)):
-            $code:
-              errors = 0
-              color = "green"
-
-            $for check in output[server]['result'].keys():
-              $ isError = output[server]['result'].get(check)
-              $if isError != 0:
-                $code:
-                  errors=errors+1
             
-            $if errors == 0:
+            $for server in range(len(output)):
               $code:
+                errors = 0
                 color = "green"
-              <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
+
+              $for check in output[server]['result'].keys():
+                $ isError = output[server]['result'].get(check)
+                $if isError != 0:
+                  $code:
+                    errors=errors+1
+              
+              $if errors == 0:
+                $code:
+                  color = "green"
+                <button class="accordion ${color}" onmouseenter="draw($output[server]['s_rate'])">$output[server]['name']</button>
       </div>
     </div>
     <div class="infos">

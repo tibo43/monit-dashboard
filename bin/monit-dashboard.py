@@ -69,11 +69,11 @@ def getMonit():
                 sorted_checks = OrderedDict()
                 sorted_checks = OrderedDict(sorted(checks.items(), key=itemgetter(1), reverse=True))
                 count = calculate_count(sorted_checks)
-                serverInfos = dict(name=hostname, url=hostname['url'], result=sorted_checks, s_rate=count, status="ok")
+                serverInfos = dict(name=server, url=hostname['url'], result=sorted_checks, s_rate=count, status="ok")
 
             except requests.ConnectionError:
                 sorted_checks = OrderedDict()
-                serverInfos = dict(name=hostname, url=hostname['url'], result=sorted_checks, s_rate=0, status="ko")
+                serverInfos = dict(name=server, url=hostname['url'], result=sorted_checks, s_rate=0, status="ko")
 
             output.append(serverInfos)
     print(datetime.datetime.now())
