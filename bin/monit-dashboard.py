@@ -72,7 +72,8 @@ def getMonit():
                 serverInfos = dict(name=hostname, url=hostname['url'], result=sorted_checks, s_rate=count, status="ok")
 
             except requests.ConnectionError:
-                serverInfos = dict(name=hostname, url=hostname['url'], result=None, s_rate=0, status="ko")
+                sorted_checks = OrderedDict()
+                serverInfos = dict(name=hostname, url=hostname['url'], result=sorted_checks, s_rate=0, status="ko")
 
             output.append(serverInfos)
     print(datetime.datetime.now())
