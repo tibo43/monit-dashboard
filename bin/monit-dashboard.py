@@ -76,6 +76,7 @@ def getMonit():
                 serverInfos = dict(name=server, url=hostname['url'], result=sorted_checks, s_rate=0, status="ko")
 
             output.append(serverInfos)
+    print(output)
     print(datetime.datetime.now())
     return(output)
 
