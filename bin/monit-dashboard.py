@@ -51,9 +51,13 @@ def getMonit():
 
         for server in servers:
             hostname = servers[server]
+            print(datetime.datetime.now())
+
             
             try:
                 response = requests.get(hostname['url'] + xmlQuery, auth=(hostname['user'], hostname['passwd']))
+                print(hostname)
+                print(response.status_code)
                 allstat = json.loads(json.dumps(xmltodict.parse(response.text)['monit']))
 
                 services = allstat['service']
@@ -72,6 +76,7 @@ def getMonit():
                 serverInfos = dict(name=server, url=hostname['url'], result=sorted_checks, s_rate=count, status="ok")
 
             except requests.ConnectionError:
+                print(hostname)
                 sorted_checks = OrderedDict()
                 serverInfos = dict(name=server, url=hostname['url'], result=sorted_checks, s_rate=0, status="ko")
 
