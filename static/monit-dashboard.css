@@ -17,6 +17,9 @@ td {
 
 body {
   font-family: arial;
+  margin: 0;
+  height: 100%;
+  overflow: hidden
 }
 
 tr:nth-child(odd) {
